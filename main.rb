@@ -14,27 +14,28 @@ $answers = [
 
 class EightBall
   def initialize
-    puts "Welcome to the Magic Eight Ball"
+    puts "Welcome to the Magic Eight Ball".colorize(:red)
+    sleep(2)
     menu
   end
 
   def menu
-    puts "1) Ask a question"
-    puts "2) QUIT"
+    puts "1) Ask a question".colorize(:red)
+    puts "2) QUIT".colorize(:red)
     print "> "
     choice = gets.to_i
     case choice
       when 1
-        puts "What is your question?"
+        puts "What is your question?".colorize(:red)
         print "> "
         $user_question = gets.strip
         puts "#{$answers.sample}"
         print_answers
       when 2
-        puts "You are now leaving Magic Eight Ball"
+        puts "You are now leaving Magic Eight Ball".colorize(:red)
         exit
       else
-        "Invalid Option"
+        "Invalid Option".colorize(:red)
     end
     menu
   end
