@@ -27,14 +27,24 @@ class EightBall
       when 1
         puts "What is your question?"
         print "> "
-        gets 
+        $user_question = gets.strip
         puts "#{$answers.sample}"
+        print_answers
       when 2
         puts "You are now leaving Magic Eight Ball"
         exit
       else
         "Invalid Option"
-        menu
+    end
+    menu
+  end
+end
+
+
+def print_answers
+  if $user_question == "Yes or yes?"
+    $answers.each do |answer|
+      puts "#{answer}"
     end
   end
 end
