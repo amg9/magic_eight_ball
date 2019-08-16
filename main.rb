@@ -14,40 +14,42 @@ $answers = [
 
 class EightBall
   def initialize
-    puts "Welcome to the Magic Eight Ball".colorize(:red)
-    sleep(2)
-    menu
+    puts "Welcome to the Magic Eight Ball!".colorize(:red)
+    sleep(1)
+    qna
   end
 
-  def menu
-    puts "1) Ask a question".colorize(:red)
-    puts "2) QUIT".colorize(:red)
+  def qna
+    puts "Type a question to get an answer, or type QUIT to end the program".colorize(:red)
     print "> "
-    choice = gets.to_i
-    case choice
-      when 1
-        puts "What is your question?".colorize(:red)
-        print "> "
-        $user_question = gets.strip
-        puts "#{$answers.sample}"
-        print_answers
-      when 2
+    $user_input = gets.strip
+    case $user_input
+      when "QUIT"
         puts "You are now leaving Magic Eight Ball".colorize(:red)
-        exit
+        exit        
+      when "Yes or yes?"
+        print_answers
+      when "Do you love me?"
+        add_answer
       else
-        "Invalid Option".colorize(:red)
+        puts "8: #{$answers.sample}".colorize(:magenta)
     end
-    menu
+    qna
   end
 end
 
 
 def print_answers
-  if $user_question == "Yes or yes?"
-    $answers.each do |answer|
-      puts "#{answer}"
-    end
+  $answers.each do |answer|
+    puts "#{answer}".colorize(:magenta)
   end
+end
+
+def add_answer
+  puts "Add an answer to Magic Eight Ball".colorize(:red)
+  print "> "
+  user_answer = gets.strip
+  $answers << user_answer
 end
 
 
